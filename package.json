@@ -14,6 +14,7 @@
     "clean": "rm -rf dist",
     "build": "yarn run clean && tsc",
     "prepublishOnly": "yarn run build",
+    "publishAlpha": "npm version prerelease --preid=dev --no-git-tag-version && yarn build && yarn publish --tag dev --non-interactive",
     "format": "prettier --write .",
     "test": "jest"
   },
