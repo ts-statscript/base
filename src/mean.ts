@@ -1,56 +1,59 @@
-import { sum } from './sum';
-
 /**
- * Computes the arithmetic mean of the values present in the array.
+ * Calculates the arithmetic mean of a numeric array.
  *
- * @param x - Array of numeric, logical, or complex values. Logical true values are treated as 1, and false values as 0.
- * @param trim - The fraction (0 to 0.5) of observations to be trimmed from each end of x before the mean is computed. Default is 0 (no trimming).
- * @param naRm - Should missing values (null, undefined, NaN) be removed? Default is false.
- *
- * @returns The arithmetic mean of the values, or NaN if the result cannot be computed (e.g., if all values are removed).
- *
- * @example
- * // Example 1: Basic mean calculation
- * console.log(mean([1, 2, 3, 4, 5])); // Output: 3
+ * @param x - An array of numbers.
+ * @param trim - The fraction (0 to 0.5) of observations to be trimmed from each end of x before the mean is computed. Default is 0.
+ * @param naRm - A boolean indicating whether NA values should be removed before computation. Default is false.
+ * @returns The arithmetic mean of the input array.
  *
  * @example
- * // Example 2: Mean calculation with trimming
- * console.log(mean([1, 2, 3, 4, 100], 0.2)); // Output: 3
+ * mean([1, 2, 3, 4, 5]); // Returns 3
+ * mean([1, 2, 3, 4, 5, NaN], false, true); // Returns 3
+ * mean([1, 2, 3, 4, 50], 0.2); // Returns 3 (trims the lowest and highest values)
  *
- * @example
- * // Example 3: Mean calculation with NA removal
- * console.log(mean([1, 2, NaN, 4, 5], 0, true)); // Output: 3
+ * @throws {Error} If the input is not a numeric array or if trim is not between 0 and 0.5.
  */
 export function mean(
-    x: (number | boolean | null | undefined)[],
+    x: number[],
     trim: number = 0,
     naRm: boolean = false
 ): number {
-    // Remove NA values if naRm is true
+    // Check if input is numeric
+    if (!x.every((val) => typeof val === 'number')) {
+        throw new Error('Argument is not numeric: returning NaN');
+    }
+
+    // Remove NaN values if naRm is true
     if (naRm) {
-        x = x.filter((value) => {
-            return (
-                value !== null && value !== undefined && !isNaN(value as number)
-            );
-        });
+        x = x.filter((val) => !isNaN(val));
     }
 
-    // Convert boolean values to numeric equivalents
-    x = x.map((value) =>
-        typeof value === 'boolean' ? (value ? 1 : 0) : value
-    );
-
-    // Handle trimming
-    if (trim > 0 && trim < 0.5) {
-        const sortedX = [...x].sort((a, b) => (a as number) - (b as number));
-        const n = sortedX.length;
-        const trimCount = Math.floor(n * trim);
-        x = sortedX.slice(trimCount, n - trimCount);
+    // Validate trim
+    if (typeof trim !== 'number' || trim < 0 || trim > 0.5) {
+        throw new Error("'trim' must be a number between 0 and 0.5");
     }
 
-    // Calculate the mean
-    const total = sum(x as number[], false);
     const n = x.length;
 
-    return n > 0 ? total / n : NaN;
+    // Handle empty array
+    if (n === 0) {
+        return NaN;
+    }
+
+    // Apply trimming if necessary
+    if (trim > 0) {
+        // Sort the array
+        x.sort((a, b) => a - b);
+
+        // Calculate trimming indices
+        const loIndex = Math.floor(n * trim);
+        const hiIndex = n - loIndex;
+
+        // Slice the array
+        x = x.slice(loIndex, hiIndex);
+    }
+
+    // Calculate mean
+    const sum = x.reduce((acc, val) => acc + val, 0);
+    return sum / x.length;
 }
