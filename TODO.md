@@ -1,0 +1,30 @@
+- [x] seq: Generate regular sequences
+- [x] rep: Replicate elements of arrays
+- [x] intersect: Set intersection for arrays
+- [x] union: Set union for arrays
+- [x] setdiff: Set difference for arrays
+- [x] any: Check if any element in an array is true
+- [x] all: Check if all elements in an array are true
+- [ ] which: Return indices of true elements in an array
+- [ ] unique: Remove duplicate elements from an array
+- [ ] sort: Sort an array
+- [ ] order: Get indices that would sort an array
+- [ ] rank: Compute ranks of elements in an array
+- [ ] cumsum: Cumulative sums of array elements
+- [ ] cumprod: Cumulative products of array elements
+- [ ] diff: Lagged differences of array elements
+- [ ] pmin: Element-wise minimum of multiple arrays
+- [ ] pmax: Element-wise maximum of multiple arrays
+- [ ] mean: Arithmetic mean of array elements
+- [ ] median: Median of array elements
+- [ ] quantile: Compute sample quantiles of an array
+- [ ] var: Compute variance of array elements
+- [ ] sd: Compute standard deviation of array elements
+- [ ] cor: Compute correlation between two arrays
+- [ ] table: Create frequency table from an array
+- [ ] cut: Bin numeric array into factor levels
+- [ ] match: Find matches between two arrays
+- [ ] inside (%in%): Check if elements are in an array
+- [ ] sapply: Apply a function over an array
+- [ ] lapply: Apply a function over a list or array
+- [ ] tapply: Apply a function over subsets of an array
