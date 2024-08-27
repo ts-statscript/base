@@ -27,10 +27,11 @@ export function sum(
     naRm: boolean = false
 ): number {
     if (naRm) {
-        values = values.filter(
-            (value) =>
+        values = values.filter((value) => {
+            return (
                 value !== null && value !== undefined && !isNaN(value as number)
-        );
+            );
+        });
     }
 
     let total = 0;
