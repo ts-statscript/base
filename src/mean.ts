@@ -28,10 +28,11 @@ export function mean(
 ): number {
     // Remove NA values if naRm is true
     if (naRm) {
-        x = x.filter(
-            (value) =>
+        x = x.filter((value) => {
+            return (
                 value !== null && value !== undefined && !isNaN(value as number)
-        );
+            );
+        });
     }
 
     // Convert boolean values to numeric equivalents
