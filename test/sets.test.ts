@@ -1,4 +1,4 @@
-import { union, intersect, setdiff, setequal, isElement } from '../src/sets';
+import { union, intersect, setdiff, setequal, isElement } from '../src';
 
 describe('Set Operations', () => {
     test('union of two sets', () => {

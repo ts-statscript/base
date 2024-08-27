@@ -1,4 +1,4 @@
-import { seq, seq_int, seq_along, seq_len } from '../src/seq';
+import { seq, seq_int, seq_along, seq_len } from '../src';
 
 describe('seq', () => {
     it('generates a sequence with default parameters', () => {

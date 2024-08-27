@@ -1,4 +1,4 @@
-import { rep, rep_int, rep_len } from '../src/rep';
+import { rep, rep_int, rep_len } from '../src';
 
 describe('rep function', () => {
     it('should repeat the entire array when given a number', () => {

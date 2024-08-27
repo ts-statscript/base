@@ -1,4 +1,4 @@
-import { mean } from '../src/mean';
+import { mean } from '../src';
 
 describe('mean function', () => {
     test('calculates the arithmetic mean of numeric values', () => {

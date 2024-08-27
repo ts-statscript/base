@@ -1,4 +1,4 @@
-import { any } from '../src/any';
+import { any } from '../src';
 
 describe('any function', () => {
     test('returns true when at least one value is true', () => {

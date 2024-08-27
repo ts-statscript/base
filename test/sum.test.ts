@@ -1,4 +1,4 @@
-import { sum } from '../src/sum';
+import { sum } from '../src';
 
 describe('sum function', () => {
     test('sums a range of numbers', () => {
