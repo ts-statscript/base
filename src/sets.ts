@@ -1,15 +1,15 @@
 /**
  * Set Operations Module
  *
- * Provides functions for performing set union, intersection, difference, equality, and membership on two vectors.
+ * Provides functions for performing set union, intersection, difference, equality, and membership on two arrays.
  */
 
 /**
- * Returns the union of two sets, discarding any duplicated values.
+ * Returns the union of two arrays, discarding any duplicated values.
  *
- * @param x - First vector.
- * @param y - Second vector.
- * @returns A vector containing the union of the two sets.
+ * @param x - First array.
+ * @param y - Second array.
+ * @returns An array containing the union of the two arrays.
  *
  * @example
  * union([1, 2, 3], [3, 4, 5]); // Returns [1, 2, 3, 4, 5]
@@ -19,11 +19,11 @@ export function union<T>(x: T[], y: T[]): T[] {
 }
 
 /**
- * Returns the intersection of two sets, discarding any duplicated values.
+ * Returns the intersection of two arrays, discarding any duplicated values.
  *
- * @param x - First vector.
- * @param y - Second vector.
- * @returns A vector containing the intersection of the two sets.
+ * @param x - First array.
+ * @param y - Second array.
+ * @returns An array containing the intersection of the two arrays.
  *
  * @example
  * intersect([1, 2, 3], [3, 4, 5]); // Returns [3]
@@ -34,11 +34,11 @@ export function intersect<T>(x: T[], y: T[]): T[] {
 }
 
 /**
- * Returns the difference between two sets (x - y), discarding any duplicated values.
+ * Returns the difference between two arrays (x - y), discarding any duplicated values.
  *
- * @param x - First vector.
- * @param y - Second vector.
- * @returns A vector containing the elements that are in x but not in y.
+ * @param x - First array.
+ * @param y - Second array.
+ * @returns An array containing the elements that are in x but not in y.
  *
  * @example
  * setdiff([1, 2, 3], [3, 4, 5]); // Returns [1, 2]
@@ -49,11 +49,11 @@ export function setdiff<T>(x: T[], y: T[]): T[] {
 }
 
 /**
- * Checks whether two sets are equal (contain the same elements).
+ * Checks whether two arrays are equal (contain the same elements).
  *
- * @param x - First vector.
- * @param y - Second vector.
- * @returns True if both sets contain the same elements, otherwise false.
+ * @param x - First array.
+ * @param y - Second array.
+ * @returns True if both arrays contain the same elements, otherwise false.
  *
  * @example
  * setequal([1, 2, 3], [3, 2, 1]); // Returns true
@@ -69,11 +69,11 @@ export function setequal<T>(x: T[], y: T[]): boolean {
 }
 
 /**
- * Checks if elements of one vector are present in another vector.
+ * Checks if elements of one array are present in another array.
  *
- * @param el - The vector of elements to check.
- * @param set - The set in which to check for membership.
- * @returns A vector of booleans indicating membership.
+ * @param el - The array of elements to check.
+ * @param set - The array in which to check for membership.
+ * @returns An array of booleans indicating membership.
  *
  * @example
  * isElement([1, 2, 6], [1, 2, 3, 4, 5]); // Returns [true, true, false]
