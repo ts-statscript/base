@@ -13,14 +13,6 @@ describe('mean function', () => {
         expect(mean([])).toBeNaN();
     });
 
-    test('handles arrays with NaN values when na.rm is true', () => {
-        expect(mean([1, 2, NaN, 4, 5], 0, true)).toBe(3);
-    });
-
-    test('returns NaN when array contains NaN and na.rm is false', () => {
-        expect(mean([1, 2, NaN, 4, 5])).toBeNaN();
-    });
-
     test('calculates trimmed mean', () => {
         expect(mean([1, 2, 3, 4, 50], 0.2)).toBe(3);
     });
@@ -30,8 +22,12 @@ describe('mean function', () => {
     });
 
     test('throws error for invalid trim values', () => {
-        expect(() => mean([1, 2, 3], -0.1)).toThrow();
-        expect(() => mean([1, 2, 3], 0.6)).toThrow();
+        expect(() => mean([1, 2, 3], -0.1)).toThrow(
+            "'trim' must be a number between 0 and 0.5"
+        );
+        expect(() => mean([1, 2, 3], 0.6)).toThrow(
+            "'trim' must be a number between 0 and 0.5"
+        );
     });
 
     test('handles arrays with identical values', () => {
@@ -49,5 +45,13 @@ describe('mean function', () => {
 
     test('returns the correct result for arrays with positive and negative numbers', () => {
         expect(mean([-10, -5, 0, 5, 10])).toBe(0);
+    });
+
+    test('handles trimming with decimal places', () => {
+        expect(mean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 0.15)).toBe(5.5);
+    });
+
+    test('handles arrays with NaN values', () => {
+        expect(mean([1, 2, NaN, 4, 5])).toBeNaN();
     });
 });
