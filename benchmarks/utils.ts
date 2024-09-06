@@ -3,12 +3,12 @@ import path from 'path';
 
 export const config = {
     outDir: './benchmarks.out',
-    resultsDir: 'results',
+    benchmarksDir: 'benchmarks',
     get outFile() {
         return path.join(this.outDir, 'benchmarks.md');
     },
-    get resultsPath() {
-        return path.join(this.outDir, this.resultsDir);
+    get benchmarksPath() {
+        return path.join(this.outDir, this.benchmarksDir);
     }
 };
 
@@ -19,7 +19,7 @@ export function ensureDirectoryExists(dir: string): void {
 }
 
 export function writeMarkdownFile(filename: string, content: string): void {
-    const filePath = path.join(config.resultsPath, filename);
+    const filePath = path.join(config.benchmarksPath, filename);
     fs.writeFileSync(filePath, content);
 }
 

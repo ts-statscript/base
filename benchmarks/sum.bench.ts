@@ -3,8 +3,7 @@ import {
     BenchmarkEntry,
     benchmarkToMarkdown
 } from '@ts-statscript/microbenchmark';
-import { writeMarkdownFile } from './utils';
-import { BenchmarkPath, generateRandomNums } from './utils';
+import { writeMarkdownFile, BenchmarkPath, generateRandomNums } from './utils';
 import { sum } from '../src';
 
 const functionName = 'sum';
