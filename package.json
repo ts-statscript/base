@@ -11,12 +11,12 @@
   },
   "license": "MIT",
   "scripts": {
-    "clean": "rm -rf dist",
+    "clean": "rm -rf dist docs",
     "build": "yarn run clean && tsc",
-    "prepublishOnly": "yarn run build",
-    "publishAlpha": "npm version prerelease --preid=dev --no-git-tag-version && yarn build && yarn publish --tag dev --non-interactive",
     "format": "prettier --write .",
-    "test": "jest"
+    "test": "jest",
+    "benchmarks": "bun run benchmarks/index.ts",
+    "docs": "yarn run benchmarks && typedoc && rm -rf benchmarks.out"
   },
   "prettier": {
     "semi": true,
@@ -36,6 +36,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "@ts-statscript/microbenchmark": "^0.0.3",
     "@types/jest": "^29.5.12",
     "@types/node": "^20.11.26",
     "husky": "^9.1.5",
@@ -43,6 +44,7 @@
     "prettier": "^3.3.3",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
+    "typedoc": "^0.26.6",
     "typescript": "^5.4.2"
   }
 }

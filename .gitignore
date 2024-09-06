@@ -1,4 +1,6 @@
 # dev
+docs/
+deprecated/
 ignore/
 *.ignore.*
 *.ignore
