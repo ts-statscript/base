@@ -21,16 +21,19 @@
  * console.log(sum(largeArray)); // Output: 500000500000
  */
 export function sum(x: number[]): number {
+    const n = x.length;
+    if (n === 0) return NaN;
+
     let i = 0;
     let sum = 0;
 
     // Main loop with unroll factor of 5
-    for (; i < x.length - 4; i += 5) {
+    for (; i < n - 4; i += 5) {
         sum += x[i] + x[i + 1] + x[i + 2] + x[i + 3] + x[i + 4];
     }
 
     // Handle remaining elements
-    for (; i < x.length; i++) {
+    for (; i < n; i++) {
         sum += x[i];
     }
 

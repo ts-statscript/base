@@ -9,8 +9,8 @@ describe('sum function', () => {
         expect(sum([1, 2, NaN, 4, 5])).toBeNaN();
     });
 
-    test('returns 0 for an empty array', () => {
-        expect(sum([])).toBe(0);
+    test('returns NaN for an empty array', () => {
+        expect(sum([])).toBeNaN();
     });
 
     test('returns NaN if the array contains only NaN', () => {
