@@ -1,6 +1,7 @@
 import { config, BenchmarkPath, ensureDirectoryExists } from './utils';
 import fs from 'fs';
 import path from 'path';
+
 import bSum from './sum.bench';
 
 async function runBenchmarks(): Promise<void> {
