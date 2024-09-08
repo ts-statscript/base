@@ -25,7 +25,7 @@ export function sum(x: number[]): number {
     let sum = 0;
 
     // Main loop with unroll factor of 5
-    for (; i < x.length - 5; i += 5) {
+    for (; i < x.length - 4; i += 5) {
         sum += x[i] + x[i + 1] + x[i + 2] + x[i + 3] + x[i + 4];
     }
 
