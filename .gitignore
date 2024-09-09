@@ -1,4 +1,7 @@
 # dev
+benchmarks.out/
+docs/
+deprecated/
 ignore/
 *.ignore.*
 *.ignore

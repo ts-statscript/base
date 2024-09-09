@@ -1,40 +1,51 @@
 import { sum } from '../src';
 
 describe('sum function', () => {
-    test('sums a range of numbers', () => {
-        expect(sum([1, 2, 3, 4, 5])).toBe(15);
+    it('should correctly sum an array of numbers', () => {
+        expect(sum([1, 2, 3, 4, 5])).toEqual({ sum: 15, count: 5 });
     });
 
-    test('returns NaN if a NaN value is present and naRm is false', () => {
-        expect(sum([1, 2, NaN, 4, 5])).toBeNaN();
+    it('should return 0 for an empty array', () => {
+        expect(sum([])).toEqual({ sum: 0, count: 0 });
     });
 
-    test('ignores NaN if naRm is true', () => {
-        expect(sum([1, 2, NaN, 4, 5], true)).toBe(12);
+    it('should handle non-numeric values when handleNonNums is true', () => {
+        expect(sum([1, 'a', 2, null, 3, undefined, 4, NaN, 5], true)).toEqual({
+            sum: 15,
+            count: 5
+        });
     });
 
-    test('handles logical values, treating true as 1 and false as 0', () => {
-        expect(sum([true, false, true])).toBe(2);
+    it('should return NaN and correct count when handleNonNums is false and non-numeric value is encountered', () => {
+        expect(sum([1, 2, 'a', 3, 4])).toEqual({ sum: NaN, count: 2 });
+        expect(sum([1, 2, 3, null, 4])).toEqual({ sum: NaN, count: 3 });
+        expect(sum([NaN, 1, 2, 3, 4])).toEqual({ sum: NaN, count: 0 });
     });
 
-    test('returns 0 for an empty array', () => {
-        expect(sum([])).toBe(0);
+    it('should handle arrays with length not divisible by 5', () => {
+        expect(sum([1, 2, 3, 4, 5, 6, 7])).toEqual({ sum: 28, count: 7 });
     });
 
-    test('returns NaN if the array contains only NaN and naRm is false', () => {
-        expect(sum([NaN, NaN])).toBeNaN();
+    it('should handle arrays with length less than 5', () => {
+        expect(sum([1, 2, 3])).toEqual({ sum: 6, count: 3 });
     });
 
-    test('returns 0 if the array contains only NaN and naRm is true', () => {
-        expect(sum([NaN, NaN], true)).toBe(0);
+    it('should handle arrays with only non-numeric values when handleNonNums is true', () => {
+        expect(sum(['a', 'b', 'c'], true)).toEqual({ sum: 0, count: 0 });
     });
 
-    test('ignores null and undefined if naRm is true', () => {
-        expect(sum([1, 2, null, undefined, 3], true)).toBe(6);
+    it('should handle arrays with only non-numeric values when handleNonNums is false', () => {
+        expect(sum(['a', 'b', 'c'], false)).toEqual({ sum: NaN, count: 0 });
     });
 
-    test('returns NaN if null or undefined is present and naRm is false', () => {
-        expect(sum([1, 2, null, 3])).toBeNaN();
-        expect(sum([1, 2, undefined, 3])).toBeNaN();
+    it('should handle arrays with Infinity', () => {
+        expect(sum([1, 2, Infinity, 3])).toEqual({ sum: Infinity, count: 4 });
+    });
+
+    it('should handle alternating numeric and non-numeric values', () => {
+        expect(sum([1, 'a', 2, 'b', 3, 'c', 4, 'd', 5], true)).toEqual({
+            sum: 15,
+            count: 5
+        });
     });
 });
